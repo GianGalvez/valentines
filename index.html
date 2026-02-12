@@ -1,0 +1,157 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jessica Ho 💘</title>
+
+  <style>
+    :root{
+      --pink:#ff4d6d;
+      --pink2:#ff7aa2;
+      --text:#1f1f1f;
+      --card: rgba(255,255,255,.92);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,.55), transparent 45%),
+        radial-gradient(circle at 85% 25%, rgba(255,255,255,.35), transparent 45%),
+        linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color:var(--text);
+      padding:18px;
+    }
+    .card{
+      width:min(420px, 100%);
+      background: var(--card);
+      border-radius:28px;
+      padding:26px 20px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.18);
+      text-align:center;
+      border:1px solid rgba(255,255,255,.6);
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:30px;
+      letter-spacing:.2px;
+    }
+    .sub{ margin:0 0 16px; font-size:15px; opacity:.82; }
+    .big{ margin:16px 0 10px; font-size:20px; line-height:1.35; }
+    .hint{ margin:0 0 14px; font-size:13px; opacity:.78; }
+    .btns{
+      margin-top:14px;
+      position:relative;
+      height:140px;
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+    }
+    button{
+      border:none;
+      border-radius:999px;
+      padding:14px 22px;
+      font-size:18px;
+      cursor:pointer;
+      box-shadow: 0 12px 24px rgba(0,0,0,.12);
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #yes{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color:white;
+    }
+    #no{
+      background:#f4f4f4;
+      position:absolute;
+      top:70px;
+      left:50%;
+      transform:translateX(-50%);
+    }
+    .footer{ margin-top:14px; font-size:12px; opacity:.72; }
+  </style>
+</head>
+
+<body>
+  <div class="card" id="card">
+    <h1>Jessica Ho 💘</h1>
+    <p class="sub">From: Gian Galvez (your favorite person, allegedly)</p>
+
+    <p class="big">
+      You better not say no or else I take doodie 😈💩<br><br>
+      Will you be my Valentine? 💐
+    </p>
+
+    <p class="hint">Tip: The “No” button has commitment issues.</p>
+
+    <div class="btns" id="arena">
+      <button id="yes" onclick="yes()">Yes 💖</button>
+      <button id="no">No 🙃</button>
+    </div>
+<iframe
+  style="border-radius:12px; margin-top:16px;"
+  src="https://open.spotify.com/embed/track/42qNWdLKCI41S4uzfamhFM"
+  width="100%"
+  height="152"
+  frameborder="0"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy">
+</iframe>
+     <p class="footer">Made with love + a tiny bit of chaos.</p>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const arena = document.getElementById("arena");
+
+    function moveNo(){
+      const rect = arena.getBoundingClientRect();
+      const pad = 10;
+      const maxX = rect.width - noBtn.offsetWidth - pad;
+      const maxY = rect.height - noBtn.offsetHeight - pad;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+      noBtn.style.transform = "none";
+    }
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveNo();
+    }, { passive:false });
+
+    function yes(){
+      document.getElementById("card").innerHTML = `
+        <h1>LET’S GOOOOO 🥰💘</h1>
+        <p class="sub">Jessica Ho said yes. The world is healing.</p>
+
+        <p class="big">
+          Gian Galvez officially claims Valentine rights 💐<br><br>
+          I promise:<br>
+          romance ✅<br>
+          laughs ✅<br>
+          and I’ll let you pick the food ✅
+        </p>
+
+        <p style="font-size:16px; margin-top:16px;">
+          <b>Date:</b> Feb 14<br>
+          <b>Location:</b> With me 😉<br>
+          <b>Dress code:</b> Cute (you always win)
+        </p>
+
+        <p class="footer">Screenshot this so you can’t take it back 😌</p>
+      `;
+    }
+  </script>
+</body>
+</html>
+
